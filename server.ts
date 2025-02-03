@@ -1,9 +1,9 @@
-import express, { Request, Response } from "express";
-import bodyParser from "body-parser";
-import { Expo } from "expo-server-sdk";
-import cors from "cors";
-import twilio from "twilio";
-import dotenv from "dotenv";
+const express = require("express");
+const bodyParser = require("body-parser");
+const { Expo } = require("expo-server-sdk");
+const cors = require("cors");
+const twilio = require("twilio");
+const dotenv = require("dotenv");
 
 dotenv.config(); // Load .env variables
 
@@ -12,16 +12,16 @@ const expo = new Expo();
 const PORT = process.env.PORT || 8000;
 
 // Twilio configuration
-const accountSid = process.env.TWILIO_ACCOUNT_SID!;
-const authToken = process.env.TWILIO_AUTH_TOKEN!;
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioClient = twilio(accountSid, authToken);
-const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER!;
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post("/send-sms", async (req: Request, res: Response): Promise<void> => {
+app.post("/send-sms", async (req, res) => {
   try {
     const { to, message } = req.body;
 
