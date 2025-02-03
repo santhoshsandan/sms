@@ -11,7 +11,7 @@ const app = express();
 const expo = new Expo();
 const PORT = process.env.PORT || 8000;
 
-// Twilio configuration
+//
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioClient = twilio(accountSid, authToken);
